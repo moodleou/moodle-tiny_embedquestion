@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2025091600;
-$plugin->requires = 2024042200; // Requires Moodle 4.4.
+$plugin->version = 2026052800;
+$plugin->requires = 2026042000; // Requires Moodle 4.4.
 $plugin->component = 'tiny_embedquestion';
 $plugin->release = '1.2';
 $plugin->maturity = MATURITY_STABLE;

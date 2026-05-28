@@ -16,7 +16,6 @@
 import Templates from 'core/templates';
 import {get_string as getString} from 'core/str';
 import Modal from 'core/modal';
-import ModalFactory from 'core/modal_factory';
 import Pending from 'core/pending';
 import {addIconToContainerRemoveOnCompletion} from 'core/loadingicon';
 import {getRelevantContextId} from './options';
@@ -58,7 +57,6 @@ export const DialogManager = class {
      * @async
      */
     displayDialogue = async(qbankCmid, isSwitchBank) => {
-        if (typeof Modal.create !== "undefined") {
             this.currentModal = await Modal.create({
                 large: true,
                 title: getString('pluginname', 'tiny_embedquestion'),
@@ -66,16 +64,6 @@ export const DialogManager = class {
                 show: true,
                 removeOnClose: true
             });
-        } else {
-            // TODO Need to be remove after we no longer support 4.2 and below.
-            this.currentModal = await ModalFactory.create({
-                title: getString('pluginname', 'tiny_embedquestion'),
-                body: '<div class="tiny_embedquestion-wrap"></div>',
-                large: true,
-                removeOnClose: true
-            });
-            this.currentModal.show();
-        }
 
         const pendingModalReady = new Pending('tiny_embedquestion/displayDialogue');
         const body = this.currentModal.getBody()[0];
